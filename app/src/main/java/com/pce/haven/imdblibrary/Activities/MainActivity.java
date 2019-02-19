@@ -39,6 +39,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import Data.MovieRecyclerViewAdapter;
 
@@ -92,16 +93,15 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
 
     public List<Movie> getReceivedMovieList(String searchTerm) {
-        final List<Movie> movieList = new ArrayList<>();
-        movieList.clear();
+        receivedMovieList.clear();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, Utilities.LEFT_URL + "s=" + searchTerm + Utilities.RIGHT_URL
                 ,null,
                 new Response.Listener<JSONObject>() {
@@ -118,8 +118,9 @@ public class MainActivity extends AppCompatActivity {
                                 movie.setTitle(jsonObject.getString("Title"));
                                 movie.setType(jsonObject.getString("Type"));
                                 movie.setPoster(jsonObject.getString("Poster"));
-                                movieList.add(movie);
+                                receivedMovieList.add(movie);
                             }
+                            adapter.notifyDataSetChanged();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         queue.add(jsonObjectRequest);
-        return movieList;
+        return receivedMovieList;
     }
 
     public void setupList(){
@@ -141,8 +142,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.movieResultsList);
         preferences = new searchPreferences(MainActivity.this);
         String search = preferences.getSearch();
+        receivedMovieList = new ArrayList<>();
         searchText.setText("Search results for : '"+search+"'");
-        receivedMovieList = getReceivedMovieList(search);
+        getReceivedMovieList(search);
         adapter = new MovieRecyclerViewAdapter(MainActivity.this,receivedMovieList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!enteredSearchTerm.getText().toString().isEmpty()) {
                     preferences.setSearch(enteredText);
                     receivedMovieList.clear();
-                    receivedMovieList = getReceivedMovieList(enteredText);
+                    getReceivedMovieList(enteredText);
                     searchText.setText("Search results for : '"+enteredText+"'");
                     adapter.notifyDataSetChanged();
                     searchDialog.dismiss();
