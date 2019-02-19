@@ -1,9 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.detailActivity">
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-</android.support.constraint.ConstraintLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar_id"
+        android:padding="5dp"
+        android:id="@+id/imageDetailCard">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/detailPoster"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:background="@android:color/black"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Movie Title"
+                android:textSize="@dimen/title_size"
+                android:layout_toRightOf="@id/detailPoster"
+                android:layout_alignTop="@id/detailPoster"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:textFontWeight="20sp"
+                android:id="@+id/detailTitleID"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rated: PG-13"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailRated"
+                android:padding="5dp"
+                android:layout_alignLeft="@id/detailTitleID"
+                android:layout_below="@id/detailTitleID"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Year :2017"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailYear"
+                android:padding="5dp"
+                android:layout_alignLeft="@id/detailTitleID"
+                android:layout_below="@id/detailRated"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Released :"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailReleased"
+                android:padding="5dp"
+                android:layout_alignLeft="@id/detailTitleID"
+                android:layout_below="@id/detailYear"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Runtime :"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailRuntime"
+                android:padding="5dp"
+                android:layout_alignLeft="@id/detailTitleID"
+                android:layout_below="@id/detailReleased"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type :"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailType"
+                android:padding="5dp"
+                android:layout_alignLeft="@id/detailTitleID"
+                android:layout_below="@id/detailRuntime"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageDetailCard"
+        android:id="@+id/plotDetailCard"
+        android:padding="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/detailPlot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Plot :"
+                android:textSize="@dimen/subtitle_size" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Director :"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailDirector"
+                android:padding="5dp"
+                android:layout_below="@id/detailPlot"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Writer :"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailWriter"
+                android:layout_below="@id/detailDirector"
+                android:padding="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actors :"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailActor"
+                android:layout_below="@id/detailWriter"
+                android:padding="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Language :"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailLanguage"
+                android:layout_below="@id/detailActor"
+                android:padding="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Country :"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailCountry"
+                android:layout_below="@id/detailLanguage"
+                android:padding="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Genre :"
+                android:textSize="@dimen/subtitle_size"
+                android:id="@+id/detailGenre"
+                android:padding="5dp"
+                android:layout_below="@id/detailCountry"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/plotDetailCard">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/detailAward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Awards :"
+                android:textSize="@dimen/subtitle_size" />
+            <TextView
+                android:id="@+id/detailMetacritic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detailAward"
+                android:padding="5dp"
+                android:text="MetaCritic :"
+                android:textSize="@dimen/subtitle_size" />
+            <TextView
+                android:id="@+id/detailimdbRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detailMetacritic"
+                android:padding="5dp"
+                android:text="imdbRating :"
+                android:textSize="@dimen/subtitle_size" />
+            <TextView
+                android:id="@+id/detailimdbVotes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detailimdbRating"
+                android:padding="5dp"
+                android:text="imdbVotes :"
+                android:textSize="@dimen/subtitle_size" />
+            <TextView
+                android:id="@+id/detailDVD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detailimdbVotes"
+                android:padding="5dp"
+                android:text="DVD Released :"
+                android:textSize="@dimen/subtitle_size" />
+            <TextView
+                android:id="@+id/detailBoxOffice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detailDVD"
+                android:padding="5dp"
+                android:text="Box Office :"
+                android:textSize="@dimen/subtitle_size" />
+            <TextView
+                android:id="@+id/detailProduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detailBoxOffice"
+                android:padding="5dp"
+                android:text="imdbVotes :"
+                android:textSize="@dimen/subtitle_size" />
+            <TextView
+                android:id="@+id/detailWebsite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/detailProduction"
+                android:padding="5dp"
+                android:text="Website :"
+                android:textSize="@dimen/subtitle_size" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
